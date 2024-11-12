@@ -1,0 +1,14 @@
+<form>
+  <div  [hidden]="ajout">
+    <label>ID Groupe</label>
+    <input type="text" [(ngModel)]="groupe.idGroupe" name="idGroupe" class="form-control w-25" readonly>
+  </div>
+  <div>
+    <label>NomGroupe</label>
+    <input type="text" [(ngModel)]="groupe.nomGroupe" name="nomGroupe" class="form-control"
+      placeholder="Entrez un nom de groupe..">
+  </div>
+  <div class="mt-2">
+    <button type="submit" [disabled]="!groupe.nomGroupe" class="btn btn-success" (click)="saveGroupe()">{{ajout ? 'Ajouter' : 'Modifier'}}</button>
+  </div>
+</form>

@@ -1,0 +1,72 @@
+<div class="container">
+  <div>
+    <h2>Modifier un Etudiant :</h2>
+  </div>
+  <form (ngSubmit)="updateEtudiant()">
+    <div hidden class="col-sm-2 col-md-2 col-lg-2">
+      <label>ID Etudiant</label>
+      <input type="text" [(ngModel)]="currentEtudiant.idEtudiant" name="idEtudiant" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Nom Etudiant</label>
+      <input type="text" [(ngModel)]="currentEtudiant.nom" name="nom" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Prenom Etudiant</label>
+      <input type="text" [(ngModel)]="currentEtudiant.prenom" name="prenom" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date Naissance</label>
+      <input type="date" [ngModel]="currentEtudiant.dateNaiss | date: 'yyyy-MM-dd'"
+        (ngModelChange)="currentEtudiant.dateNaiss = $event" name="dateNaiss" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Classe</label>
+      <input type="text" [(ngModel)]="currentEtudiant.classe" name="classe" class="form-control">
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <label>Email</label>
+      <input type="text" [(ngModel)]="currentEtudiant.email" name="email" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Groupe</label>
+      <select class="form-control form-control-lg" id="idGroupe" name="idGroupe" [(ngModel)]="updatedGroupeId">
+        <option *ngFor="let gp of groupes" [value]="gp.idGroupe">
+          {{gp.nomGroupe}}
+        </option>
+      </select>
+    </div>
+    <div class="col-sm-16 col-md-16 col-lg-16">
+      <label class="mb-2">Image :</label>
+      <input type="file" (change)="onImageUpload($event)" name="logo" class="form-control">
+    </div>
+    <div class="mt-2">
+      <button type="button" (click)="onAddImageEtudiant()" class="btn btn-success">Ajouter Image</button>
+    </div>
+    <div class="mt-2">
+      <div class="col-sm-16 col-md-16 col-lg-16">
+        <img [src]="myImage" class="card-img-top img-fluid rounded-start" style="width: 500px; height: 300px" />
+      </div>
+      <div class="card shadow mb-4">
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Images</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let img of currentEtudiant.images">
+              <tr>
+                <td><img class="card-img-top img-responsive" src="{{'data:' + img.type + ';base64,' + img.image}}"
+                    style="height: 50px; width: 100px"></td>
+                <td style="width:20%"><a class="btn btn-danger" (click)="supprimerImage(img)">Supprimer</a></td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">Modifier</button>
+    </div>
+  </form>
+</div>

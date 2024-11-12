@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+    <app-update-groupe [groupe]="updatedGroupe"
+    (groupeUpdated)= "groupeUpdated($event)"
+    [ajout]="ajout"></app-update-groupe>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom Groupe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let gp of groupes">
+            <td>{{gp.idGroupe}}</td>
+            <td>{{gp.nomGroupe}}</td>
+            <td><a class="btn btn-success" (click)="updateGroupe(gp)">Editer</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container">
+ <!--  <form class="form-inline" (submit)="rechercherEtuds(); $event.preventDefault();">
+    <div class="form-group mx-sm-3 mb-2 mt-2">
+      <label>Nom Etudiant</label>
+      <input type="text" class="form-control" [(ngModel)]="nomEtudiant" name="nomEtudiant">
+      <button type="button" (click)="rechercherEtuds()" class="btn btn-primary mb-2 ml-2">Rechercher</button>
+    </div>
+  </form> -->
+  <!-- <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2 mt-2 ">
+      <label>Nom Etudiant en tapant</label>
+      <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control">
+    </div>
+  </form>
+ -->
+ <form class="form-inline">
+  <div class="form-group mx-sm-3 mb-2 mt-2 ">
+  <label>Nom Etudiant en tapant</label>
+  <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" >
+  </div>
+  </form>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Date Naissance</th>
+            <th>Classe</th>
+            <th>Email</th>
+            <th>Groupe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let etudiant of etudiants  | searchFilter: searchTerm">
+            <td>{{etudiant.idEtudiant}}</td>
+            <td>{{etudiant.nom}}</td>
+            <td>{{etudiant.prenom}}</td>
+            <td>{{etudiant.dateNaiss | date:'dd/MM/yyyy'}}</td>
+            <td>{{etudiant.classe}}</td>
+            <td>{{etudiant.email}}</td>
+            <td>{{etudiant.groupe.nomGroupe}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
